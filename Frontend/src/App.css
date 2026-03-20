@@ -19,6 +19,7 @@
 .landingPageContainer nav h2 {
     font-size: 1.8rem;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .landingPageContainer nav .navList {
@@ -60,4 +61,127 @@
 .landingMainConatiner>div:nth-child(2) img {
     height: 70vh;
     width: auto;
+}
+
+.authMainContainer {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 5rem;
+    height: 80vh;
+    align-items: center;
+}
+
+.authLeft {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.authLeft h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.authFormBox {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 3rem 2.5rem;
+    width: 100%;
+    max-width: 450px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.inputGroup {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    transition: border-color 0.3s ease;
+}
+
+.inputGroup:focus-within {
+    border-color: #FF9839;
+}
+
+.inputIcon {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    opacity: 0.7;
+    color: #FFE7CC
+}
+
+.inputGroup input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 1.1rem;
+    width: 100%;
+}
+
+.inputGroup input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.authSubmitBtn {
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 1rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background-color: #D97500;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.authSubmitBtn:hover {
+    background-color: #FF9839;
+}
+
+.authSwitch {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.authSwitch a {
+    color: #FF9839;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.authSwitch a:hover {
+    text-decoration: underline;
+}
+
+.authRight {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.authRight img {
+    height: 75vh;
+    width: auto;
+    object-fit: contain;
+}
+
+.errorMessage {
+    background-color: rgba(255, 60, 60, 0.1);
+    color: #ff5252;
+    border: 1px solid rgba(255, 82, 82, 0.3);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    text-align: center;
 }
