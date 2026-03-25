@@ -34,7 +34,7 @@ export default function Login() {
             };
             const response = await axios.post("http://localhost:8000/api/users/login", payload);
             localStorage.setItem("token", response.data.token);
-            navigate('/home');
+            navigate('/video');
         } catch (error) {
             setError(error.response?.data?.message || "An error occurred while logging in.");
         } finally {
