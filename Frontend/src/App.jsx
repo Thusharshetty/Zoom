@@ -6,7 +6,7 @@ import Landing from './pages/Landing';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import VedioComponent from './pages/VedioComponent';
+import VideoComponent from './pages/VideoComponent';
 
 function App() {
 
@@ -18,7 +18,7 @@ function App() {
         <Route path='/' element={<Landing />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
-        <Route path='/video' element={<VedioComponent />}></Route>
+        <Route path='/video' element={<VideoComponent />}></Route>
       </Routes>
     </BrowserRouter>
   )
