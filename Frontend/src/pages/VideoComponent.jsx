@@ -91,6 +91,18 @@ export default function VideoMeetComponent() {
             console.log(error);
         }
     }
+
+    let getMedia = () => {
+        setVideo(videoAvailable);
+        setAudio(audioAvailable);
+        connectToSocketServer();
+    }
+
+    let connect = () => {
+        setAskForUsername(false);
+        getMedia();
+    }
+
     return (
         <div>
 
