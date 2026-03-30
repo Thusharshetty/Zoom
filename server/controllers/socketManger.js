@@ -58,13 +58,14 @@ const connectToSocket = (server) => {
                     'sender': sender, 'data': data, 'socket-id-sender': socket.id
                 });
                 connections[matchingRoom].forEach((id) => {
-                    io.to(id).emit('chat-message', data, sender, socket.id);
+                    io.to(id).emit('chat-msg', data, sender, socket.id);
                 });
+
             }
         });
         socket.on("disconnect", () => {
             var diffTime = Math.abs(timeOnline[socket.id] - new Date());
-            console.log("User disconnected: ", diffTime);
+
             var foundKey;
             for (const [key, value] of JSON.parse(JSON.stringify(Object.entries(connections)))) {
                 for (let i = 0; i < value.length; i++) {
@@ -75,7 +76,7 @@ const connectToSocket = (server) => {
                         }
                         var index = connections[foundKey].indexOf(socket.id);
                         connections[foundKey].splice(index, 1);
-                        console.log(foundKey, "has left");
+
 
                         if (connections[foundKey].length === 0) {
                             delete connections[foundKey];

@@ -35,9 +35,9 @@ export default function VideoMeetComponent() {
 
     let [audioAvailable, setAudioAvailable] = useState(true);
 
-    let [video, setVideo] = useState([]);
+    let [video, setVideo] = useState(true);
 
-    let [audio, setAudio] = useState();
+    let [audio, setAudio] = useState(true);
 
     let [screen, setScreen] = useState();
 
@@ -62,7 +62,7 @@ export default function VideoMeetComponent() {
 
 
     useEffect(() => {
-        console.log("HELLO")
+
         getPermissions();
 
     }, []);
@@ -81,25 +81,25 @@ export default function VideoMeetComponent() {
             const videoPermission = await navigator.mediaDevices.getUserMedia({ video: true });
             if (videoPermission) {
                 setVideoAvailable(true);
-                console.log('Video permission granted');
+
             } else {
                 setVideoAvailable(false);
-                console.log('Video permission denied');
+
             }
             const audioPermission = await navigator.mediaDevices.getUserMedia({ audio: true });
             if (audioPermission) {
                 setAudioAvailable(true);
-                console.log('Audio permission granted');
+
             } else {
                 setAudioAvailable(false);
-                console.log('Audio permission denied');
+
             }
             if (navigator.mediaDevices.getDisplayMedia) {
                 setScreenAvailable(true);
-                console.log('Screen permission granted');
+
             } else {
                 setScreenAvailable(false);
-                console.log('Screen permission denied');
+
             }
             if (videoAvailable || audioAvailable) {
                 const userMediaStream = await navigator.mediaDevices.getUserMedia({ video: videoAvailable, audio: audioAvailable });
@@ -114,12 +114,12 @@ export default function VideoMeetComponent() {
             console.log(error);
         }
     }
-    useEffect(() => {
-        if (video !== undefined && audio !== undefined) {
-            getUserMedia();
-            console.log("SET STATE HAS ", video, audio);
-        }
-    }, [video, audio]);
+    // useEffect(() => {
+    //     if (video !== undefined && audio !== undefined) {
+    //         getUserMedia();
+    //         console.log("SET STATE HAS ", video, audio);
+    //     }
+    // }, [video, audio]);
 
     let getMedia = () => {
         setVideo(videoAvailable);
@@ -252,7 +252,7 @@ export default function VideoMeetComponent() {
         socketRef.current.on("connect", () => {
             socketRef.current.emit('join-call', window.location.href);
             socketIdRef.current = socketRef.current.id;
-            socketRef.current.on('chat-message', addMessage);
+            socketRef.current.on('chat-msg', addMessage);
             socketRef.current.on("user-left", (id) => {
                 setVideos((videos) => videos.filter((video) => video.socketId !== id));
             });
@@ -265,11 +265,10 @@ export default function VideoMeetComponent() {
                         }
                     }
                     connections[socketListId].onaddstream = (event) => {
-                        console.log("BEFORE:", videoRef.current);
-                        console.log("FINDING ID: ", socketListId);
+
                         let videoExists = videoRef.current.find(video => video.socketId === socketListId);
                         if (videoExists) {
-                            console.log("FOUND EXISTING");
+
                             setVideos(videos => {
                                 const updatedVideos = videos.map(video =>
                                     video.socketId === socketListId ? { ...video, stream: event.stream } : video
@@ -278,7 +277,7 @@ export default function VideoMeetComponent() {
                                 return updatedVideos;
                             });
                         } else {
-                            console.log("CREATING NEW");
+
                             const newVideo = {
                                 socketId: socketListId,
                                 stream: event.stream,
@@ -332,10 +331,20 @@ export default function VideoMeetComponent() {
         return Object.assign(stream.getVideoTracks()[0], { enabled: false })
     }
     let handleVideo = () => {
+        if (window.localStream) {
+            window.localStream.getVideoTracks().forEach(track => {
+                track.enabled = !video; // Disables or enables the camera hardware
+            })
+        }
         setVideo(!video);
     }
     let handleAudio = () => {
-        setAudio(!audio)
+        if (window.localStream) {
+            window.localStream.getAudioTracks().forEach(track => {
+                track.enabled = !audio; // Disables or enables the microphone hardware
+            })
+        }
+        setAudio(!audio);
     }
     useEffect(() => {
         if (screen !== undefined) {
@@ -350,7 +359,7 @@ export default function VideoMeetComponent() {
             let tracks = localVideoref.current.srcObject.getTracks()
             tracks.forEach(track => track.stop())
         } catch (e) { }
-        window.location.href = "/"
+        window.location.href = "/home";
     }
     let openChat = () => {
         setModal(true);
@@ -367,6 +376,7 @@ export default function VideoMeetComponent() {
         getMedia();
     }
     const addMessage = (data, sender, socketIdSender) => {
+
         setMessages((prevMessages) => [
             ...prevMessages,
             { sender: sender, data: data }
@@ -376,10 +386,15 @@ export default function VideoMeetComponent() {
         }
     }
     let sendMessage = () => {
-        console.log(socketRef.current);
-        socketRef.current.emit('chat-message', message, username)
+        // console.log(socketRef.current);
+        socketRef.current.emit('chat-msg', message, username)
         setMessage("");
     }
+    useEffect(() => {
+        if (askForUsername === false && window.localStream && localVideoref.current) {
+            localVideoref.current.srcObject = window.localStream;
+        }
+    }, [askForUsername]);
     return (
         <div>
 
