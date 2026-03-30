@@ -6,7 +6,7 @@ export default function Navbar() {
         <nav>
             <div className='navHeader'>
                 <Link to="/">
-                    <h2>Apna Vedio Call</h2>
+                    <h2>Apna Video Call</h2>
                 </Link>
 
             </div>
