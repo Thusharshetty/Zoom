@@ -1,4 +1,5 @@
 const User = require('../models/userSchema.js');
+const Meeting = require('../models/meetingSchema.js');
 
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
@@ -51,4 +52,31 @@ const register = async (req, res) => {
     }
 }
 
-module.exports = { login, register };
+
+const getUserHistory=async(req,res)=>{
+    const{token}=req.query;
+    try{
+        const user=await User.findOne({token:token});
+        const meetings=await Meeting.find({user_id:user.username});
+        res.status(200).json(meetings);
+    } catch (error) {
+        res.status(500).json({ message: `Error occurred while fetching user history: ${error.message}` });
+    }
+}
+
+const addToHistory=async(req,res)=>{
+    const{token,meeting_code}=req.body;
+    try{
+        const user=await User.findOne({token:token});
+        const newMeeting=new Meeting({
+            user_id:user.username,
+            meetingCode:meeting_code,
+        });
+        await newMeeting.save();
+        res.status(201).json({ message: "Meeting added to history successfully" });
+    }catch (error) {
+        res.status(500).json({ message: `Error occurred while adding to history: ${error.message}` });
+    }
+}
+
+module.exports = { login, register,getUserHistory,addToHistory };
