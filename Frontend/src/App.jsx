@@ -15,15 +15,18 @@ function App() {
 
   return (
     <BrowserRouter>
-      
+      <AuthProvider>
       <Routes>
         <Route path='/home' element={<Home />}></Route>
         <Route path='/' element={<Landing />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
         <Route path='/:url' element={<VideoComponent />}></Route>
-        <Route path='/history' element={<History/>}></Route>
+       
+          <Route path='/history' element={<History/>}></Route>
+        
       </Routes>
+      </AuthProvider>
       
     </BrowserRouter>
   )

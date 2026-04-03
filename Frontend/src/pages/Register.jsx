@@ -13,7 +13,6 @@ export default function Register() {
         name: '',
         username: '',
         password: '',
-        confirmPassword: ''
     });
 
     const [error, setError] = useState('');
@@ -28,10 +27,6 @@ export default function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (formData.password !== formData.confirmPassword) {
-            setError("Passwords do not match!");
-            return;
-        }
         setLoading(true);
         setError('');
         try {
@@ -95,18 +90,6 @@ export default function Register() {
                                 required
                             />
                         </div>
-                        <div className="inputGroup">
-                            <span className="inputIcon"><PasswordTwoToneIcon /></span>
-                            <input
-                                type="password"
-                                name="confirmPassword"
-                                placeholder="Confirm Password"
-                                value={formData.confirmPassword}
-                                onChange={handleChange}
-                                required
-                            />
-                        </div>
-
                         <button type="submit" className="authSubmitBtn" style={{ marginTop: '2rem' }} disabled={loading}>{loading ? "Creating Account..." : "Create Account"}</button>
 
                         <p className="authSwitch">
@@ -116,7 +99,9 @@ export default function Register() {
                 </div>
 
                 <div className='authRight'>
-                    <img src="/mobile.png" alt="Video Call App Preview" />
+                    <div className="themedImageContainer">
+                        <img src="/user.jpg" alt="Video Call App Preview" />
+                    </div>
                 </div>
             </div>
         </div>

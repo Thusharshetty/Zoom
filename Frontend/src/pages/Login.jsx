@@ -34,7 +34,7 @@ export default function Login() {
             };
             const response = await axios.post("http://localhost:8000/api/users/login", payload);
             localStorage.setItem("token", response.data.token);
-            navigate('/video');
+            navigate('/home');
         } catch (error) {
             setError(error.response?.data?.message || "An error occurred while logging in.");
         } finally {
@@ -78,7 +78,9 @@ export default function Login() {
                     </form>
                 </div>
                 <div className="authRight">
-                    <img src="/mobile.png" alt="Video Call App Preview" />
+                   <div className="themedImageContainer">
+                        <img src="/user.jpg" alt="Video Call App Preview" />
+                    </div>
                 </div>
             </div>
 

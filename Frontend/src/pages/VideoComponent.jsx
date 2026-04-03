@@ -13,6 +13,7 @@ import StopScreenShareIcon from '@mui/icons-material/StopScreenShare'
 import ChatIcon from '@mui/icons-material/Chat'
 // import server from '../environment';
 
+
 const server_url = "http://localhost:8000";
 
 
@@ -22,6 +23,10 @@ const peerConfigConnections = {
     "iceServers": [
         { "urls": "stun:stun.l.google.com:19302" }
     ]
+}
+
+const getCode=() => {
+    return window.localStorage.getItem("current_meeting_code");
 }
 
 export default function VideoMeetComponent() {
@@ -400,18 +405,53 @@ export default function VideoMeetComponent() {
 
             {askForUsername === true ?
 
-                <div>
+                <div className={styles.lobbyContainer}>
+                    <div className={styles.lobbyBox}>
+                        <h2><span style={{ color: "#FF9839" }}>Join</span> Lobby</h2>
+                        
+                        {/* Video Preview Box */}
+                        <div className={styles.videoPreviewContainer}>
+                            <video ref={localVideoref} autoPlay muted className={styles.lobbyVideo}></video>
+                        </div>
 
-
-                    <h2>Enter into Lobby </h2>
-                    <TextField id="outlined-basic" label="Username" value={username} onChange={e => setUsername(e.target.value)} variant="outlined" />
-                    <Button variant="contained" onClick={connect}>Connect</Button>
-
-
-                    <div>
-                        <video ref={localVideoref} autoPlay muted></video>
+                        {/* Inputs and Button */}
+                        <div className={styles.lobbyInputs}>
+                            <TextField 
+                                id="outlined-basic" 
+                                label="Username" 
+                                value={username} 
+                                onChange={e => setUsername(e.target.value)} 
+                                variant="outlined"
+                                fullWidth
+                                sx={{
+                                    input: { color: 'white' },
+                                    label: { color: 'rgba(255, 255, 255, 0.7)' },
+                                    '& .MuiOutlinedInput-root': {
+                                        '& fieldset': { borderColor: 'rgba(255, 255, 255, 0.4)' },
+                                        '&:hover fieldset': { borderColor: '#FF9839' },
+                                        '&.Mui-focused fieldset': { borderColor: '#FF9839' },
+                                    }
+                                }}
+                            />
+                            
+                            <Button 
+                                variant="contained" 
+                                onClick={connect}
+                                fullWidth
+                                style={{ 
+                                    backgroundColor: "#D97500", 
+                                    color: "white", 
+                                    padding: "0.8rem 1.6rem", 
+                                    fontSize: "1.1rem",
+                                    fontWeight: "600",
+                                    borderRadius: "8px",
+                                    marginTop: "1rem" 
+                                }}
+                            >
+                                Connect
+                            </Button>
+                        </div>
                     </div>
-
                 </div> :
                 <div className={styles.meetVideoContainer}>
                     {showModal ? <div className={styles.chatRoom}>
@@ -453,6 +493,7 @@ export default function VideoMeetComponent() {
                                 <ChatIcon />
                             </IconButton>
                         </Badge>
+                        <p style={{color:"white"}}>{getCode()}</p>
                     </div>
                     <video className={styles.meetUserVideo} ref={localVideoref} autoPlay muted></video>
                     <div className={styles.conferenceView}>

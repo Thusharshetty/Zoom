@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Children } from 'react';
 import { createContext, useContext, useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 
@@ -8,7 +7,7 @@ const client=axios.create({
     baseURL:"http://localhost:8000/api/users"    
 });
 
-export const AuthProvider=({Children})=>{
+export const AuthProvider=({children})=>{
     const authContext=useContext(AuthContext);
     const [userData,setUserData]=useState(authContext);
     const router=useNavigate();
@@ -65,7 +64,7 @@ const addToUserHistory =async(meetingCode)=>{
 const data={ userData, setUserData, addToUserHistory, getHistoryOfUser, handleRegister, handleLogin};
 return(
     <AuthContext.Provider value={data}>
-        {Children}
+        {children}
     </AuthContext.Provider>
 )
 }

@@ -16,7 +16,9 @@ export default function Landing() {
                     </Link>
                 </div>
                 <div className='landingMainRight'>
-                    <img src="/mobile.png" alt="" />
+                  <div className="themedImageContainer">
+                        <img src="/mainLogo.jpg" alt="Connect Illustration" />
+                    </div>
                 </div>
             </div>
         </div>

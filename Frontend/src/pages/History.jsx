@@ -37,6 +37,7 @@ export default function HistoryComponent() {
         return `${day}/${month}/${year}`
 
     }
+    const routeTo = useNavigate();
         return (
              <div>
 
