@@ -25,8 +25,7 @@
 
 > **Landing & Authentication — Premium dark theme with glassmorphism design**
 
-![Landing Page](<img width="1917" height="1027" alt="image" src="https://github.com/user-attachments/assets/a2e8cdbc-0390-47e1-90fa-e74552adf06b" />
-)
+![Landing Page](<img width="1917" height="1027" alt="image" src="https://github.com/user-attachments/assets/a2e8cdbc-0390-47e1-90fa-e74552adf06b" />)
 
 > **Home Dashboard — Start new meetings or join existing ones**
 
