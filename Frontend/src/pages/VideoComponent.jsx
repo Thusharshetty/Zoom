@@ -54,7 +54,7 @@ export default function VideoMeetComponent() {
 
     let [message, setMessage] = useState("");
 
-    let [newMessages, setNewMessages] = useState(3);
+    let [newMessages, setNewMessages] = useState(0);
 
     let [askForUsername, setAskForUsername] = useState(true);
 
@@ -454,22 +454,51 @@ export default function VideoMeetComponent() {
                     </div>
                 </div> :
                 <div className={styles.meetVideoContainer}>
-                    {showModal ? <div className={styles.chatRoom}>
+                   {showModal ? <div className={styles.chatRoom}>
                         <div className={styles.chatContainer}>
                             <h1>Chat</h1>
+                            
                             <div className={styles.chattingDisplay}>
                                 {messages.length !== 0 ? messages.map((item, index) => {
                                     return (
-                                        <div style={{ marginBottom: "20px" }} key={index}>
-                                            <p style={{ fontWeight: "bold" }}>{item.sender}</p>
-                                            <p>{item.data}</p>
+                                        <div className={styles.messageBubble} key={index}>
+                                            <p className={styles.messageSender}>{item.sender}</p>
+                                            <p className={styles.messageData}>{item.data}</p>
                                         </div>
                                     )
-                                }) : <p>No messages yet</p>}
+                                }) : <p style={{ color: "rgba(255, 255, 255, 0.5)", textAlign: "center", marginTop: "2rem" }}>No messages yet</p>}
                             </div>
+                            
                             <div className={styles.chattingArea}>
-                                <TextField value={message} onChange={(e) => setMessage(e.target.value)} id="outlined-basic" label="Enter Your chat" variant="outlined" />
-                                <Button variant='contained' onClick={sendMessage}>Send</Button>
+                                <TextField 
+                                    value={message} 
+                                    onChange={(e) => setMessage(e.target.value)} 
+                                    id="outlined-basic" 
+                                    label="Type a message..." 
+                                    variant="outlined" 
+                                    fullWidth
+                                    sx={{
+                                        input: { color: 'black' },
+                                        label: { color: 'rgba(0, 0, 0, 0.7)' },
+                                        '& .MuiOutlinedInput-root': {
+                                            '& fieldset': { borderColor: 'rgba(255, 255, 255, 0.4)', borderRadius: '8px' },
+                                            '&:hover fieldset': { borderColor: '#FF9839' },
+                                            '&.Mui-focused fieldset': { borderColor: '#FF9839' },
+                                        }
+                                    }}
+                                />
+                                <Button 
+                                    variant='contained' 
+                                    onClick={sendMessage}
+                                    style={{ 
+                                        backgroundColor: "#D97500", 
+                                        color: "white", 
+                                        fontWeight: "bold",
+                                        borderRadius: "8px"
+                                    }}
+                                >
+                                    Send
+                                </Button>
                             </div>
                         </div>
                     </div> : <></>}
@@ -493,7 +522,14 @@ export default function VideoMeetComponent() {
                                 <ChatIcon />
                             </IconButton>
                         </Badge>
-                        <p style={{color:"white"}}>{getCode()}</p>
+                        <div className={styles.meetingCode}>
+                            <p style={{ margin: 0, fontSize: "0.8rem", color: "rgba(255, 255, 255, 0.6)" }}>
+                                Meeting Code
+                            </p>
+                            <p style={{ margin: 0, fontSize: "1.1rem", color: "#FF9839", fontWeight: "bold", letterSpacing: "1px" }}>
+                                {getCode()}
+                            </p>
+                        </div>
                     </div>
                     <video className={styles.meetUserVideo} ref={localVideoref} autoPlay muted></video>
                     <div className={styles.conferenceView}>

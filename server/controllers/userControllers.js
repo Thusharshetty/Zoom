@@ -57,6 +57,9 @@ const getUserHistory=async(req,res)=>{
     const{token}=req.query;
     try{
         const user=await User.findOne({token:token});
+        if (!user) {
+            return res.status(401).json({ message: "Invalid or expired token" });
+        }
         const meetings=await Meeting.find({user_id:user.username});
         res.status(200).json(meetings);
     } catch (error) {
@@ -68,6 +71,9 @@ const addToHistory=async(req,res)=>{
     const{token,meeting_code}=req.body;
     try{
         const user=await User.findOne({token:token});
+        if (!user) {
+            return res.status(401).json({ message: "Invalid or expired token" });
+        }
         const newMeeting=new Meeting({
             user_id:user.username,
             meetingCode:meeting_code,

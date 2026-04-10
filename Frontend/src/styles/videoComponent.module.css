@@ -84,15 +84,18 @@
 }
 
 /* Chat Sidebar */
+/* --- Chat Sidebar Styles --- */
 .chatRoom {
     width: 350px;
     height: calc(100vh - 80px);
-    background: white;
-    border-left: 1px solid #ddd;
+    background: rgba(255, 255, 255, 0.95); /* Dark background matching bottom bar */
+    backdrop-filter: blur(10px);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
     z-index: 15;
     transition: all 0.3s ease;
+    color: white;
 }
 
 .chatContainer {
@@ -105,8 +108,10 @@
     font-size: 1.5rem;
     padding: 20px;
     margin: 0;
-    border-bottom: 1px solid #eee;
-    color: #333;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+    color: #FF9839; /* Signature orange accent */
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 /* Chat messages area */
@@ -114,21 +119,46 @@
     flex: 1;
     overflow-y: auto;
     padding: 20px;
-    background: #f8f9fa;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Adds breathing room between messages */
+}
+
+/* New Message Bubble Styles */
+.messageBubble {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    align-self: flex-start;
+    max-width: 90%;
+    word-wrap: break-word;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.messageSender {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #FF9839;
+    margin: 0 0 5px 0;
+}
+
+.messageData {
+    margin: 0;
+    font-size: 0.95rem;
+    color: rgba(0, 0, 0, 0.9);
+    line-height: 1.4;
 }
 
 /* Input area for chat */
 .chattingArea {
     padding: 15px;
-    background: white;
-    border-top: 1px solid #eee;
+    background: rgba(0, 0, 0, 0.2); /* Slightly darker to separate from messages */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     gap: 10px;
     flex-shrink: 0;
-}
-
-.chattingArea .MuiTextField-root {
-    flex: 1;
 }
 /* --- Lobby Screen Styles --- */
 
@@ -189,4 +219,47 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+.meetingCode {
+    background: rgba(255, 255, 255, 0.05); 
+    padding: 0.5rem 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 152, 57, 0.3); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    /* margin-left: auto;  */
+}
+
+
+@media screen and (max-width: 900px) {
+    .chatRoom { width: 300px; } 
+}
+
+
+@media screen and (max-width: 768px) {
+    .chatRoom {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%; 
+        height: calc(100vh - 80px);
+        z-index: 30;
+    }
+    .meetUserVideo {
+        width: 120px; 
+        bottom: 90px;
+        right: 15px;
+        border-radius: 8px;
+    }
+    .buttonContainers {
+        padding-inline: 10px;
+        gap: 8px; 
+    }
+    .meetingCode { padding: 0.3rem 0.8rem; }
+    .meetingCode p { font-size: 0.85rem !important; }
+    .meetingCode p:first-child { display: none; }
 }
