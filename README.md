@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎥 Apna Video Call
+#  Apna Video Call
 
 ### Real-Time Video Conferencing Platform
 
@@ -21,11 +21,12 @@
 
 ---
 
-## 📸 Screenshots
+##  Screenshots
 
 > **Landing & Authentication — Premium dark theme with glassmorphism design**
 
-![Landing Page](https://via.placeholder.com/1000x500.png?text=Add+Landing+Screenshot+Here)
+![Landing Page](<img width="1917" height="1027" alt="image" src="https://github.com/user-attachments/assets/a2e8cdbc-0390-47e1-90fa-e74552adf06b" />
+)
 
 > **Home Dashboard — Start new meetings or join existing ones**
 
@@ -37,22 +38,22 @@
 
 ---
 
-## ✨ Features
+##  Features
 
 | Feature | Description |
 |---|---|
-| 🎥 **Real-Time Video & Audio** | Low-latency peer-to-peer streaming using WebRTC |
-| 💬 **Live In-Room Chat** | Instant messaging powered by Socket.io |
-| 🖥️ **Screen Sharing** | Share your screen seamlessly during any meeting |
-| 🔒 **Secure Authentication** | JWT-based sessions with bcrypt password hashing |
-| 🕒 **Meeting History** | Room codes stored and retrievable for quick rejoin |
-| 🎨 **Premium UI/UX** | Glassmorphism dark theme built with Material UI |
-| 🔇 **Smart Audio** | Built-in echo cancellation & noise suppression |
-| ☁️ **Cloud Deployed** | Frontend on Vercel, backend on Render, DB on Atlas |
+|  **Real-Time Video & Audio** | Low-latency peer-to-peer streaming using WebRTC |
+|  **Live In-Room Chat** | Instant messaging powered by Socket.io |
+|  **Screen Sharing** | Share your screen seamlessly during any meeting |
+|  **Secure Authentication** | JWT-based sessions with bcrypt password hashing |
+|  **Meeting History** | Room codes stored and retrievable for quick rejoin |
+|  **Premium UI/UX** | Glassmorphism dark theme built with Material UI |
+|  **Smart Audio** | Built-in echo cancellation & noise suppression |
+|  **Cloud Deployed** | Frontend on Vercel, backend on Render, DB on Atlas |
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Frontend
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
@@ -74,7 +75,7 @@
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 apna-video-app/
@@ -97,7 +98,7 @@ apna-video-app/
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 - Node.js v18+
@@ -147,7 +148,7 @@ http://localhost:5173
 
 ---
 
-## 🌐 API Reference
+##  API Reference
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -156,11 +157,11 @@ http://localhost:5173
 | `GET` | `/api/users/get_all_activity` | Retrieve meeting history for the user |
 | `POST` | `/api/users/add_to_activity` | Save a room code to meeting history |
 
-> ⚡ **Socket.io** handles all WebRTC signaling, peer connection setup, room management, and live chat — outside the REST layer.
+>  **Socket.io** handles all WebRTC signaling, peer connection setup, room management, and live chat — outside the REST layer.
 
 ---
 
-## ☁️ Deployment
+##  Deployment
 
 | Layer | Platform | Details |
 |-------|----------|---------|
@@ -170,7 +171,7 @@ http://localhost:5173
 
 ---
 
-## 🔮 Roadmap
+##  Roadmap
 
 - [ ] Screen recording & export
 - [ ] Raise hand / reactions in meetings
@@ -180,7 +181,7 @@ http://localhost:5173
 
 ---
 
-## 👨‍💻 Author
+##  Author
 
 **Thushar Shetty**
 
@@ -191,7 +192,7 @@ B.Tech Computer Science — Canara Engineering College (2027)
 
 ---
 
-## 📄 License
+##  License
 
 This project is for educational and portfolio purposes.
 
