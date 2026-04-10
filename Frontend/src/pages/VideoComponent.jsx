@@ -32,6 +32,11 @@ const getCode=() => {
     return window.localStorage.getItem("current_meeting_code");
 }
 
+const audioConstraints = {
+        echoCancellation: true,      // Stops the feedback loop
+        noiseSuppression: true,      // Blocks background fans/typing
+        autoGainControl: true        // Balances loud and soft voices
+    };
 export default function VideoMeetComponent() {
     const navigate = useNavigate();
 
@@ -67,6 +72,9 @@ export default function VideoMeetComponent() {
     const videoRef = useRef([])
 
     let [videos, setVideos] = useState([])
+
+
+
 
 
 
@@ -111,7 +119,7 @@ export default function VideoMeetComponent() {
 
             }
             if (videoAvailable || audioAvailable) {
-                const userMediaStream = await navigator.mediaDevices.getUserMedia({ video: videoAvailable, audio: audioAvailable });
+                const userMediaStream = await navigator.mediaDevices.getUserMedia({ video: videoAvailable, audio: audioAvailable ? audioConstraints : false});
                 if (userMediaStream) {
                     window.localStream = userMediaStream;
                     if (localVideoref.current) {
@@ -188,7 +196,7 @@ export default function VideoMeetComponent() {
     }
     let getUserMedia = () => {
         if ((video && videoAvailable) || (audio && audioAvailable)) {
-            navigator.mediaDevices.getUserMedia({ video: videoAvailable, audio: audioAvailable })
+            navigator.mediaDevices.getUserMedia({ video: videoAvailable, audio: audioAvailable ? audioConstraints : false })
                 .then(getUserMediaSuccess)
                 .catch((e) => console.log(e))
         } else {
