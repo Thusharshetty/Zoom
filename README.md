@@ -25,15 +25,17 @@
 
 > **Landing & Authentication — Premium dark theme with glassmorphism design**
 
-![Landing Page] (<img width="1917" height="1027" alt="image" src="https://github.com/user-attachments/assets/a2e8cdbc-0390-47e1-90fa-e74552adf06b" />)
+<img width="1917" height="1027" alt="image" src="https://github.com/user-attachments/assets/a2e8cdbc-0390-47e1-90fa-e74552adf06b" />
 
 > **Home Dashboard — Start new meetings or join existing ones**
 
-![Home Dashboard](https://via.placeholder.com/1000x500.png?text=Add+Dashboard+Screenshot+Here)
+<img width="1915" height="1027" alt="image" src="https://github.com/user-attachments/assets/580463be-811a-4356-979b-d6ea4449a740" />
+
 
 > **Live Video Room — WebRTC video streams, live chat, and room controls**
 
-![Video Room](https://via.placeholder.com/1000x500.png?text=Add+Video+Room+Screenshot+Here)
+<img width="1913" height="1036" alt="image" src="https://github.com/user-attachments/assets/29459adb-1ccb-4e7e-95f9-2b2f7f534f7a" />
+
 
 ---
 
