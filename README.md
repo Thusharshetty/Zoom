@@ -168,7 +168,7 @@ http://localhost:5173
 |-------|----------|---------|
 | Frontend | [Vercel](https://vercel.com) | Auto-deploy from `main`, CDN-optimised |
 | Backend | [Render](https://render.com) | Persistent server for WebSocket support |
-| Database | [MongoDB Atlas](https://cloud.mongodb.com) | Free tier M0 cluster |
+
 
 ---
 
