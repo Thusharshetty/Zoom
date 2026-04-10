@@ -14,7 +14,7 @@ import ChatIcon from '@mui/icons-material/Chat'
 // import server from '../environment';
 
 
-const server_url = "http://localhost:8000";
+const server_url = "https://apna-video-backend.onrender.com";
 
 
 var connections = {};

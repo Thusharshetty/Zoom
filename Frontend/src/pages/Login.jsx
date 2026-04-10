@@ -32,7 +32,7 @@ export default function Login() {
                 username: formData.username,
                 password: formData.password
             };
-            const response = await axios.post("http://localhost:8000/api/users/login", payload);
+            const response = await axios.post("https://apna-video-backend.onrender.com/api/users/login", payload);
             localStorage.setItem("token", response.data.token);
             navigate('/home');
         } catch (error) {

@@ -35,7 +35,7 @@ export default function Register() {
                 username: formData.username,
                 password: formData.password
             };
-            const response = await axios.post("http://localhost:8000/api/users/register", payload);
+            const response = await axios.post("https://apna-video-backend.onrender.com/api/users/register", payload);
             navigate("/login");
             console.log(response.data);
         } catch (error) {
